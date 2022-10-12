@@ -1,7 +1,7 @@
 package com.company;
 
 /**
- * @author xiongtian <xiongtian@kuaishou.com>
+ * @author
  * Created on 2021-10-19
  */
 class Solution {
