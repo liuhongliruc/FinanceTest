@@ -1,22 +1,23 @@
 package com.company;
+import static com.company.Industry4.readAll;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 import org.xmind.core.Core;
-import org.xmind.core.CoreException;
-import org.xmind.core.INotes;
-import org.xmind.core.IPlainNotesContent;
 import org.xmind.core.ISheet;
 import org.xmind.core.ITopic;
 import org.xmind.core.IWorkbook;
 import org.xmind.core.IWorkbookBuilder;
-import org.xmind.core.internal.dom.TopicImpl;
 
-import com.sun.tools.hat.internal.model.Root;
+import javafx.scene.Parent;
 
 /**
  * @author liuhongli <liuhongli@kuaishou.com>
@@ -24,16 +25,18 @@ import com.sun.tools.hat.internal.model.Root;
  */
 public class Xmind {
     public static void main(String[] args) throws Exception {
-
         String root="FM:";
         String xmindEmptyPath="/Users/hongliliu/Documents/测试用例xmind/auto/test.xmind";
         int n=4;
-        createEmptyTestCases(root,xmindEmptyPath,n);
-
-        root="FM:new";
+       // createEmptyTestCases(root,xmindEmptyPath,n);
+        String title="功能cases";
+        root="FM:"+title;
         String inputPath="/Users/hongliliu/testH/xmind/input.txt";
         String xmindPath="/Users/hongliliu/Documents/测试用例xmind/auto/demo.xmind";
-        createXmind(root,inputPath,xmindPath);
+        //createOneLayerXmind(root,inputPath,xmindPath);
+        String inputCsvPath="/Users/hongliliu/Documents/测试用例xmind/testcases.csv";
+        String xmindPath2="/Users/hongliliu/Documents/测试用例xmind/auto/demoT.xmind";
+        createTwoLayersXmind(root,inputCsvPath,xmindPath2);
     }
     public static void createEmptyTestCases(String root,String path,int n) throws Exception{
 
@@ -76,7 +79,7 @@ public class Xmind {
         workbook.save(path);
     }
 
-    public static void createXmind(String root,String inputPath,String path) throws Exception{
+    public static void createOneLayerXmind(String root,String inputPath,String path) throws Exception{
         // 创建思维导图的工作空间
         IWorkbookBuilder workbookBuilder = Core.getWorkbookBuilder();
         IWorkbook workbook = workbookBuilder.createWorkbook();
@@ -94,6 +97,55 @@ public class Xmind {
         while((s=b.readLine())!=null){
             ITopic topic = workbook.createTopic();
             topic.setTitleText("TC:"+s.trim());
+            rootTopic.add(topic, ITopic.ATTACHED);
+        }
+        workbook.save(path);
+    }
+
+    public static void createTwoLayersXmind(String root,String inputPath,String path) throws Exception{
+        List<String[]> list=readAll(inputPath);
+        LinkedHashMap<String,ITopic> map=new LinkedHashMap<>();
+        String currentLayer="";
+        // 创建思维导图的工作空间
+        IWorkbookBuilder workbookBuilder = Core.getWorkbookBuilder();
+        IWorkbook workbook = workbookBuilder.createWorkbook();
+        // 获得默认sheet
+        ISheet primarySheet = workbook.getPrimarySheet();
+        // 获得根主题
+        ITopic rootTopic = primarySheet.getRootTopic();
+        // 设置根主题的标题
+        rootTopic.setTitleText(root);
+        //正确的逻辑图 org.xmind.ui.logic.right
+        rootTopic.setStructureClass("org.xmind.ui.logic.right");
+        for(int i=0;i<list.size();i++){
+           String[] array=list.get(i);
+           if(!array[0].equals("")){
+               currentLayer=array[0];
+               if(!map.containsKey(currentLayer)){
+                   ITopic topicParent = workbook.createTopic();
+                   topicParent.setTitleText("FM:"+currentLayer);
+                   map.put(currentLayer,topicParent);
+
+                   ITopic topicSon = workbook.createTopic();
+                   topicSon.setTitleText("TC:"+array[1]);
+                   topicParent.add(topicSon, ITopic.ATTACHED);
+               }
+               else{
+                   ITopic topicParent=map.get(currentLayer);
+                   ITopic topicSon = workbook.createTopic();
+                   topicSon.setTitleText("TC:"+array[1]);
+                   topicParent.add(topicSon, ITopic.ATTACHED);
+               }
+           }
+           else{
+               ITopic topicParent=map.get(currentLayer);
+               ITopic topicSon = workbook.createTopic();
+               topicSon.setTitleText("TC:"+array[1]);
+               topicParent.add(topicSon, ITopic.ATTACHED);
+           }
+        }
+        for(Map.Entry<String,ITopic> entry:map.entrySet()){
+            ITopic topic=entry.getValue();
             rootTopic.add(topic, ITopic.ATTACHED);
         }
         workbook.save(path);
