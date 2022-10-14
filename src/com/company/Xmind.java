@@ -1,5 +1,6 @@
 package com.company;
-import static com.company.Industry4.readAll;
+
+import static com.company.IndustryFour.readAll;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
