@@ -6,7 +6,7 @@ package utils;
  */
 public class TenBelowAdd {
     public static void main(String[] args){
-      // TenBelowAdd();
+         TenBelowAdd();
          TenBelowMinus();
     }
     public static void TwentyBelowAdd(){
