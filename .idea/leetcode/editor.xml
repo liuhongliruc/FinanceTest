@@ -1059,6 +1059,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[389]找不同.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/doc/content/[389]找不同.md" />
+              <option name="frontendQuestionId" value="leetcode.cn389" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[389]找不同.java" />
+              <option name="titleSlug" value="find-the-difference" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[38]外观数列.java">
           <value>
             <LeetcodeEditor>
@@ -1166,6 +1177,28 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[4]寻找两个正序数组的中位数.java" />
               <option name="titleSlug" value="median-of-two-sorted-arrays" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[501]二叉搜索树中的众数.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/doc/content/[501]二叉搜索树中的众数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn501" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[501]二叉搜索树中的众数.java" />
+              <option name="titleSlug" value="find-mode-in-binary-search-tree" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[504]七进制数.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/doc/content/[504]七进制数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn504" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="/var/folders/0r/4g264f055bsfpmhj5sdxxk100000gn/T/leetcode/editor/cn/[504]七进制数.java" />
+              <option name="titleSlug" value="base-7" />
             </LeetcodeEditor>
           </value>
         </entry>

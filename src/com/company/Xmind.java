@@ -224,7 +224,6 @@ public class Xmind {
                     else{
                         LinkedHashMap<String,ITopic> map1=listTopics.get(j);
                         map1.put(s,topicSon);
-                        listTopics.add(map1);
                     }
                 }
             }
